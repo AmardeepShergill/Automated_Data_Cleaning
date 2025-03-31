@@ -40,5 +40,7 @@ After the cleaning process, we would then need to verify that the code has worke
 * Validata data integrity and consistency
 * Generate a cleaning report that can then be
 
+
 # Wrap up
 This type of data cleaning can help to save time with a new dataset and will also help to ensure consistency with data prep processes for each now dataset. This will handle common data quality issues and give a report on the data once completed. The cleaning repot should then be used to validate the results for the specific use case that is required.
+
