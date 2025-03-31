@@ -31,7 +31,7 @@ This step is one approach to doing a check using the interquartile range of the 
 * Identify values beyond 1.5 * IQR from quartiles ( this can be change for datasets where more varience would be expected ) 
 * Potentially apply capping to extreme values rather than removing them where this is appropriate. The other option would be to remove the data with the knowlege of the data being and outlier.
 
-# Step 5: Validate the Results
+# Step 4: Validate the Results
 
 After the cleaning process, we would then need to verify that the code has worked as expected. To do this we would:
 
