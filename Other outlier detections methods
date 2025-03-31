@@ -1,4 +1,28 @@
 # Other potenital motheds to detect outliers
 
-In some cases the interquartile range of the data my be expected to be much larger than in other cases aking using the 
-interquartile range less usefull than in other cases.
+In some cases the interquartile range may not be the mnost useful way of detecting outliers within a data set. This is cause by the interquartile range assuming that 1.5x the range is a threshold.
+To counter this you have either use a different value for what you would consider and outliers or use one of the other methods mentioned below.
+
+
+##  Z-Score Method
+
+The Z-Score of the data point is used to show how far away from the mean a specific point is, this is then measured in standard deviations. In general any data that is more than 3 standard deviations above or below the mean would be flagged as an outlier. This value can again be changed assuming that you have some specific domain knowlege for the dataset. The main benifit of using this method is that it is simple to do and work espically well with normally distrivuted data, it does fall down when the data has a longer tail like in video games/book sales or is heavily skewed such as income distribution. 
+
+Z-score is calculated using Z= (X- μ)σ where μ is the mean value of the data and σ is the standard deviation. The function below will calcuate the mean and standard deviationss of the column using numpy that use that to confirm the Z-Score. It then proceed to print any values that would be considered as outliers to the data.
+
+def detect_outliers_zscore(data, threshold=3):
+    # Calculate mean and standard deviation
+    mean = np.mean(data)
+    std = np.std(data)
+    # Compute Z-scores
+    z_scores = (data - mean) / std
+    # Find indices where Z-scores exceed the threshold
+    outlier_indices = np.where(np.abs(z_scores) > threshold)
+    # Extract corresponding outlier values
+    outlier_values = data[outlier_indices]
+    return outlier_indices[0], outlier_values
+
+indices, values = detect_outliers_zscore(data)  
+print("Z-Score Outliers (Index, Value):")
+for idx, val in zip(indices, values):
+    print(f"Index: {idx}, Value: {val}")
