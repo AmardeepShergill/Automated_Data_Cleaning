@@ -26,3 +26,41 @@ indices, values = detect_outliers_zscore(data)
 print("Z-Score Outliers (Index, Value):")
 for idx, val in zip(indices, values):
     print(f"Index: {idx}, Value: {val}")
+
+## Local Outlier Factor
+This is a unsupervide algorithm that will find outleir in relation to local neighbourhoods as opposed to using the entire data distribution. It then uses the denisity of nearby to show potential outliers that a seperated from the rest of the data where points with a low density of other local data will be marked. The function below can be used to help determine these outliers. This menthod worst best with complex data or datasets that have multiple dimensions, the difficulty is with this method is that it does require more fine tuning and wont work with data sets that do not have some inate density.   
+
+from sklearn.neighbors import LocalOutlierFactor
+
+def detect_outliers_lof(data, n_neighbors=20, contamination=0.1):
+    """
+    Detects outliers using the Local Outlier Factor (LOF) method.
+
+    Args:
+        data (numpy array): 1D array of numerical data.
+        n_neighbors (int): Number of neighbors to consider for LOF.
+        contamination (float): Proportion of the dataset assumed to be outliers.
+
+    Returns:
+        tuple: Indices and values of detected outliers.
+    """
+    # Reshape the 1D array for LOF (it expects a 2D array as input)
+    reshaped_data = data.reshape(-1, 1)
+
+    # Initialize and fit the LOF model
+    lof = LocalOutlierFactor(n_neighbors=n_neighbors, contamination=contamination)
+
+    # Predict outliers: -1 for outliers, 1 for inliers
+    outliers = lof.fit_predict(reshaped_data)
+
+    # Get indices and values of outliers
+    outlier_indices = np.where(outliers == -1)[0]
+    outlier_values = data[outlier_indices]
+    return outlier_indices, outlier_values
+
+indices, values = detect_outliers_lof(data)  # Pass the 1D NumPy array
+print("LOF Outliers (Index, Value):")
+for idx, val in zip(indices, values):
+    print(f"Index: {idx}, Value: {val}")
+
+
