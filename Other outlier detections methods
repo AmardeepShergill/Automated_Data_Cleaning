@@ -1,0 +1,4 @@
+# Other potenital motheds to detect outliers
+
+In some cases the interquartile range of the data my be expected to be much larger than in other cases aking using the 
+interquartile range less usefull than in other cases.
