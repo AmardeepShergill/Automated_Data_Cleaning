@@ -63,4 +63,21 @@ print("LOF Outliers (Index, Value):")
 for idx, val in zip(indices, values):
     print(f"Index: {idx}, Value: {val}")
 
+## Isolation Forest
+
+Isolation Forest wroks by partition the data in a random order and isoloating individual points from there. In doing the any outliers end up being isoleted much faster than other points that are closer together. A contamination parameter is used to help set an expectation for the proportion of outliers in the data. 
+
+This methods works especially with large datasets due to this, the main issue with this method is that results depend highly on the contamination parameter that is set in the code. Below is an example code that can be used to rund this method
+
+def detect_outliers_isolation_forest(data, contamination=0.1):
+    iso = IsolationForest(contamination=contamination, random_state=42)
+    outliers = iso.fit_predict(data.reshape(-1, 1))
+    outlier_indices = np.where(outliers == -1)[0]
+    outlier_values = data[outlier_indices]
+    return outlier_indices, outlier_values
+
+indices, values = detect_outliers_isolation_forest(data)
+print("Isolation Forest Outliers (Index, Value):")
+for idx, val in zip(indices, values):
+    print(f"Index: {idx}, Value: {val}")
 
