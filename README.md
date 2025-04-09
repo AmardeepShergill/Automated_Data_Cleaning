@@ -1,4 +1,4 @@
-# Automated_Data_Cleaning
+# Automated_Data_Cleaning.
 A method to mostly clean data in python using automation.
 
 This method requires identifying common data quality issues and then writing solutions that can handle various datasets consistently.
