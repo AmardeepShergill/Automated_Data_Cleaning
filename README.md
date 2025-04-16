@@ -5,7 +5,7 @@ This method requires identifying common data quality issues and then writing sol
 
 ## Step 1: Running Basic Data Quality Checks
 
-Before cleaning the data first we need to understand the quality of the data that is being worked with. This will give you a base understanding of the quality of the data and help to find te specific cleaning task that are needed for a particular dataset
+Before cleaning the data first we need to understand the quality of the data that is being worked with. This will give you an understanding of the quality of the data and help to find the specific cleaning task that are needed for a particular dataset
 
 This first step will then indentify cases of:
 * Missing values within a column
