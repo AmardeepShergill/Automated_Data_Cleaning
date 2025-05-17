@@ -7,3 +7,5 @@ def check_data_quality(df):
         'memory_usage': df.memory_usage().sum() / 1024**2  # in MB
     }
     return quality_report
+
+
