@@ -1,7 +1,7 @@
 def remove_outliers(df):
     numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns
     outliers_removed = {}
-    
+      
     for column in numeric_columns:
         Q1 = df[column].quantile(0.25)
         Q3 = df[column].quantile(0.75)
