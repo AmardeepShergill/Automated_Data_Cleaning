@@ -12,4 +12,4 @@ def standardize_datatypes(df):
                     print(f"Converted {column} to numeric")
                 except:
                     pass
-    return df
+  return df
